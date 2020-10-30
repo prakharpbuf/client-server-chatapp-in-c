@@ -208,7 +208,7 @@ int serverMain(int port)
 						cse4589_print_and_log("[%s:SUCCESS]\n", cmd);
 						clients *index = myClientList;
 						int list_id = 1;
-						while(index){
+					 	while(index){
 							if(strcmp(index->status,"logged-out")==0){
 								index=index->next;
 								continue;

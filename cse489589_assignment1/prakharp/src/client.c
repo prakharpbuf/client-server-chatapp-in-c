@@ -47,46 +47,46 @@ int connect_to_host(char *server_ip, int server_port, int port);
 
 //IP validation citation: https://www.tutorialspoint.com/c-program-to-validate-an-ip-address (functions validate_number(char *str) and validate_ip(char *ip))
 
-int validate_number(char *str) {
-   while (*str) {
-      if(*str>='0' && *str<='9'){ //if the character is not a number, return false
-         str++;
-      }
-			else return 0;
-   }
-   return 1;
-}
-int validate_ip(char *ip) { //check whether the IP is valid or not
-   int i, num, dots = 0;
-   char *ptr;
-   if (ip == NULL)
-      return 0;
-      ptr = strtok(ip, "."); //cut the string using dor delimiter
-      if (ptr == NULL)
-         return 0;
-   while (ptr) {
-      if (!validate_number(ptr)) //check whether the sub string is holding only number or not
-         return 0;
-         num = atoi(ptr); //convert substring to number
-         if (num >= 0 && num <= 255) {
-            ptr = strtok(NULL, "."); //cut the next part of the string
-            if (ptr != NULL)
-               dots++; //increase the dot count
-         } else
-            return 0;
-    }
-    if (dots != 3) //if the number of dots are not 3, return false
-       return 0;
-      return 1;
-}
-int isValidPort(char *port){
-	for(int i=0;i<strlen(port);i++){
-		if(isdigit(port[i])==0){
-			return 0;
-		}
-	}
-	return 1;
-}
+// int validate_number(char *str) {
+//    while (*str) {
+//       if(*str>='0' && *str<='9'){ //if the character is not a number, return false
+//          str++;
+//       }
+// 			else return 0;
+//    }
+//    return 1;
+// }
+// int validate_ip(char *ip) { //check whether the IP is valid or not
+//    int i, num, dots = 0;
+//    char *ptr;
+//    if (ip == NULL)
+//       return 0;
+//       ptr = strtok(ip, "."); //cut the string using dor delimiter
+//       if (ptr == NULL)
+//          return 0;
+//    while (ptr) {
+//       if (!validate_number(ptr)) //check whether the sub string is holding only number or not
+//          return 0;
+//          num = atoi(ptr); //convert substring to number
+//          if (num >= 0 && num <= 255) {
+//             ptr = strtok(NULL, "."); //cut the next part of the string
+//             if (ptr != NULL)
+//                dots++; //increase the dot count
+//          } else
+//             return 0;
+//     }
+//     if (dots != 3) //if the number of dots are not 3, return false
+//        return 0;
+//       return 1;
+// }
+// int isValidPort(char *port){
+// 	for(int i=0;i<strlen(port);i++){
+// 		if(isdigit(port[i])==0){
+// 			return 0;
+// 		}
+// 	}
+// 	return 1;
+// }
 
  /**
  * main function
@@ -190,14 +190,15 @@ int clientMain(int port)
 		cse4589_print_and_log("[%s:END]\n", msg);
 	}
 	else if(strcmp(input[0],"LOGIN")==0){
-		if(validate_ip(input[1])==0){
-			cse4589_print_and_log("[%s:ERROR]\n", msg);
-			cse4589_print_and_log("[%s:END]\n", msg);
-		}
-		else if(isValidPort(input[2])==0){
-			cse4589_print_and_log("[%s:ERROR]\n", msg);
-			cse4589_print_and_log("[%s:END]\n", msg);
-		}
+		// if(validate_ip(input[1])==0){
+		// 	cse4589_print_and_log("[%s:ERROR]\n", msg);
+		// 	cse4589_print_and_log("[%s:END]\n", msg);
+		// }
+		// else if(isValidPort(input[2])==0){
+		// 	cse4589_print_and_log("[%s:ERROR]\n", msg);
+		// 	cse4589_print_and_log("[%s:END]\n", msg);
+		// }
+    if(0){}
 		else{
 		listener=connect_to_host(input[1],atoi(input[2]), port);
 		// FD_SET(listener, &master_list);
